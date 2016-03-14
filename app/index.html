@@ -9,5 +9,41 @@
 We are using node <script>document.write(process.versions.node)</script>,
 Chrome <script>document.write(process.versions.chrome)</script>,
 and Electron <script>document.write(process.versions.electron)</script>.
+
+<br>
+<button id="open-file">打开文件</button>
+<br><br>
+<button id="open-dir">打开文件夹</button>
+<br><br>
+<button id="save-file">保存文件</button>
+<br><br>
+<button id="msg-box">弹出对话框</button>
+<br><br>
+<button id="err-box">报错对话框</button>
+
+<script>
+    var ipc = require('electron').ipcRenderer;
+
+    var openfileDialog = document.querySelector('#open-file');
+    openfileDialog.addEventListener('click', function(){
+        ipc.send('open-file');
+    });
+
+    document.querySelector('#open-dir').addEventListener('click', function(){
+        ipc.send('open-dir');
+    });
+
+    document.querySelector('#save-file').addEventListener('click', function(){
+        ipc.send('save-file');
+    });
+
+    document.querySelector('#msg-box').addEventListener('click', function(){
+        ipc.send('msg-box');
+    });
+
+    document.querySelector('#err-box').addEventListener('click', function(){
+        ipc.send('err-box');
+    });
+</script>
 </body>
 </html>
