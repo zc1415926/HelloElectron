@@ -34,7 +34,7 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a class="glyphicon glyphicon-remove" href="../navbar/"></a></li>
+                <li><a id="closeMainWindow" class="glyphicon glyphicon-remove"></a></li>
             </ul>
         </div>
     </div>
@@ -82,6 +82,10 @@
 
     document.querySelector('#err-box').addEventListener('click', function () {
         ipc.send('err-box');
+    });
+
+    document.querySelector('#closeMainWindow').addEventListener('click', function(){
+        ipc.send('closeMainWindow');
     });
 </script>
 

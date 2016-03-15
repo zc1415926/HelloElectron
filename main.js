@@ -96,3 +96,21 @@ ipc.on('err-box', function () {
         '不好啦，出错啦！'
     );
 });
+
+ipc.on('closeMainWindow', function(){
+    dialog.showMessageBox({
+            type: 'question',
+            buttons: ['残忍关闭', '取消'],
+            defaultId: 0,
+            title: '确认要退出？',
+            message: '主人，真的忍心要把我关掉吗？',
+            cancelId: 1,
+            noLink: true
+        },
+        function (value) {
+            if(0 == value){
+                app.quit();
+            }
+        }
+    );
+});
