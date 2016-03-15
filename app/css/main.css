@@ -1,0 +1,12 @@
+@font-face {
+    font-family: yahei-consolas;
+    src: url('../font/YaHei.Consolas.1.12.ttf')
+}
+
+h1, p, a {
+    font-family: yahei-consolas;
+}
+
+body {
+    padding-top: 70px;
+}

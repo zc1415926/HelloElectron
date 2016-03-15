@@ -1,1 +1,6 @@
 /.idea
+/node_modules
+app/css/bootstrap.min.css
+app/js/jquery.min.js
+app/js/bootstrap.min.js
+app/font/YaHei.Consolas.1.12.ttf

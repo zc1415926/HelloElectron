@@ -1,49 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-</head>
-<body>
-<h1>Hello World!</h1>
-We are using node <script>document.write(process.versions.node)</script>,
-Chrome <script>document.write(process.versions.chrome)</script>,
-and Electron <script>document.write(process.versions.electron)</script>.
+    <meta charset="utf-8">
 
-<br>
-<button id="open-file">打开文件</button>
-<br><br>
-<button id="open-dir">打开文件夹</button>
-<br><br>
-<button id="save-file">保存文件</button>
-<br><br>
-<button id="msg-box">弹出对话框</button>
-<br><br>
-<button id="err-box">报错对话框</button>
+    <title>Fixed Top Navbar Example for Bootstrap</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+
+    <script>window.$ = window.jQuery = require('./js/jquery.min.js');</script>
+    <script src="./js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">你好Electron</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Nav header</li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../navbar/">Default</a></li>
+            </ul>
+        </div>
+    </div>
+</nav><!--/Fixed navbar -->
+
+<!-- container -->
+<div class="container">
+    <div class="jumbotron">
+        <h1>按钮示例</h1>
+        <p>这里展示了官方文档中列出的5种可以调用的对话框。<a class="btn btn-link" href="http://electron.atom.io/docs/v0.37.2/api/dialog/">详见文档</a></p>
+        <p>
+            <button id="open-file" class="btn btn-primary">打开文件</button>
+            <button id="open-dir" class="btn btn-primary">打开文件夹</button>
+            <button id="save-file" class="btn btn-primary">保存文件</button>
+            <button id="msg-box" class="btn btn-primary">弹出对话框</button>
+            <button id="err-box" class="btn btn-primary">报错对话框</button>
+        </p>
+    </div>
+    <br>
+    <p>
+    We are using node <script>document.write(process.versions.node)</script>,
+    Chrome <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>.</p>
+</div> <!-- /container -->
 
 <script>
     var ipc = require('electron').ipcRenderer;
 
     var openfileDialog = document.querySelector('#open-file');
-    openfileDialog.addEventListener('click', function(){
+    openfileDialog.addEventListener('click', function () {
         ipc.send('open-file');
     });
 
-    document.querySelector('#open-dir').addEventListener('click', function(){
+    document.querySelector('#open-dir').addEventListener('click', function () {
         ipc.send('open-dir');
     });
 
-    document.querySelector('#save-file').addEventListener('click', function(){
+    document.querySelector('#save-file').addEventListener('click', function () {
         ipc.send('save-file');
     });
 
-    document.querySelector('#msg-box').addEventListener('click', function(){
+    document.querySelector('#msg-box').addEventListener('click', function () {
         ipc.send('msg-box');
     });
 
-    document.querySelector('#err-box').addEventListener('click', function(){
+    document.querySelector('#err-box').addEventListener('click', function () {
         ipc.send('err-box');
     });
 </script>
+
 </body>
 </html>
