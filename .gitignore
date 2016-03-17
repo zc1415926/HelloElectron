@@ -1,6 +1,3 @@
 /.idea
 /node_modules
-app/css/bootstrap.min.css
-app/js/jquery.min.js
-app/js/bootstrap.min.js
-app/fonts/
+/app

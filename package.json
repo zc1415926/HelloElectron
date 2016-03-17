@@ -10,9 +10,13 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^3.3.5",
-    "jquery": "^1.11.3"
+    "browserify": "^13.0.0",
+    "jquery": "^1.11.3",
+    "react": "^0.14.7",
+    "reactify": "^1.1.1"
   },
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "vinyl-source-stream": "^1.1.0"
   }
 }
