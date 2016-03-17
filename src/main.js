@@ -26,7 +26,7 @@ app.on('ready', function () {
         resizable: false
     });
 
-    mainWindow.loadURL('file://' + __dirname + '/app/index.html');
+    mainWindow.loadURL('file://' + __dirname + '/index.html');
 
     mainWindow.webContents.openDevTools();
 

@@ -11,11 +11,11 @@ var source = require('vinyl-source-stream');
 var config = {
     path: {
         cssSrcDir: 'src/css',
-        cssDistDir: 'app/css',
+        cssDistDir: 'dist/app/css',
         jsSrcDir:  'src/js',
-        jsDistDir:  'app/js',
-        jsFiles: 'app/js/*/*.js',
-        fontDir: 'app/fonts',
+        jsDistDir:  'dist/app/js',
+        jsFiles: 'dist/app/js/*/*.js',
+        fontDir: 'dist/app/fonts',
         indexJs: 'src/js/index.js'
     }
 }
@@ -27,11 +27,16 @@ gulp.task('copyFrontLib', function(){
         .pipe(gulp.dest(config.path.jsDistDir));
     gulp.src('node_modules/bootstrap/fonts/*')
         .pipe(gulp.dest(config.path.fontDir));
+    gulp.src('src/main.js')
+        .pipe(gulp.dest('dist/app/'));
+    gulp.src('package.json')
+        .pipe(gulp.dest('dist/'));
+
 });
 
 gulp.task('html', function(){
     gulp.src('src/index.html')
-        .pipe(gulp.dest('app/'));
+        .pipe(gulp.dest('dist/app/'));
 });
 
 gulp.task('js', function(){
