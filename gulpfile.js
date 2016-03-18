@@ -7,6 +7,9 @@ var gulp = require('gulp');
 var browserify = require('browserify');
 var reactify = require('reactify');
 var source = require('vinyl-source-stream');
+var electron = require('electron-prebuilt');
+var gulpUtil = require('gulp-util');
+var childProcess = require('child_process');
 
 var config = {
     path: {
@@ -31,7 +34,6 @@ gulp.task('copyFrontLib', function(){
         .pipe(gulp.dest('dist/app/'));
     gulp.src('package.json')
         .pipe(gulp.dest('dist/'));
-
 });
 
 gulp.task('html', function(){
@@ -53,8 +55,22 @@ gulp.task('css', function(){
         .pipe(gulp.dest(config.path.cssDistDir));
 });
 
+gulp.task('open', function(){
+
+    var stdoutData = childProcess.spawn(electron, ['./dist', '--enable-logging']);
+
+    stdoutData.stdout.on('data', function(data){
+        gulpUtil.log(data.toString().replace('\n', ''));
+    });
+
+    stdoutData.on('exit', function(){
+        //To stop the "watch" task by an error code.
+        gulp.watch().close();
+    });
+});
+
 gulp.task('watch', function(){
     gulp.watch(config.path.jsFiles, ['js']);
 });
 
-gulp.task('default', ['copyFrontLib', 'html', 'js', 'css', 'watch']);
+gulp.task('default', ['copyFrontLib', 'html', 'js', 'css', 'watch', 'open']);
